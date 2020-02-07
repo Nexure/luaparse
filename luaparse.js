@@ -1677,6 +1677,7 @@
           return parseBreakStatement();
         case 'do':       next(); return parseDoStatement(flowContext);
         case 'goto':     next(); return parseGotoStatement(flowContext);
+        case 'continue': next(); return;
       }
     }
 
