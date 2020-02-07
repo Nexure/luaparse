@@ -1286,7 +1286,7 @@
       case 6:
         return 'elseif' === id || 'repeat' === id || 'return' === id;
       case 8:
-        return 'function' === id;
+        return 'function' === id || 'continue' === id;
     }
     return false;
   }
