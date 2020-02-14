@@ -144,6 +144,12 @@
           type: 'BreakStatement'
       };
     }
+	
+	, continueStatement: function(){
+		return {
+			type: 'ContinueStatement'
+		};
+	}
 
     , gotoStatement: function(label) {
       return {
@@ -1286,7 +1292,7 @@
       case 6:
         return 'elseif' === id || 'repeat' === id || 'return' === id;
       case 8:
-        return 'function' === id || 'continue' === id;
+        return 'continue' === id || 'function' === id;
     }
     return false;
   }
@@ -1675,9 +1681,9 @@
           if (!flowContext.isInLoop())
             raise(token, errors.noLoopToBreak, token.value);
           return parseBreakStatement();
+		case 'continue': next(); return parseBreakStatement();
         case 'do':       next(); return parseDoStatement(flowContext);
         case 'goto':     next(); return parseGotoStatement(flowContext);
-        case 'continue': next(); return;
       }
     }
 
@@ -1716,6 +1722,10 @@
 
   function parseBreakStatement() {
     return finishNode(ast.breakStatement());
+  }
+  
+  function parseContinueStatement() {
+    return finishNode(ast.continueStatement());
   }
 
   //     goto ::= 'goto' Name
@@ -1875,6 +1885,7 @@
       flowContext.pushScope(true);
       body = parseBlock(flowContext);
       flowContext.popScope();
+	  consume(';');
       expect('end');
       if (options.scope) destroyScope();
 
