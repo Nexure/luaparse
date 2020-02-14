@@ -5,7 +5,7 @@
 
   // Used to determine if values are of the language type `Object`
   var objectTypes = {
-        'function': true
+      'function': true
       , 'object': true
     }
     // Detect free variable `exports`
@@ -20,8 +20,8 @@
 
   /* istanbul ignore else */
   if (freeGlobal && (freeGlobal.global === freeGlobal ||
-                     /* istanbul ignore next */ freeGlobal.window === freeGlobal ||
-                     /* istanbul ignore next */ freeGlobal.self === freeGlobal)) {
+    /* istanbul ignore next */ freeGlobal.window === freeGlobal ||
+    /* istanbul ignore next */ freeGlobal.self === freeGlobal)) {
     root = freeGlobal;
   }
 
@@ -29,8 +29,8 @@
   // patterns like the following:
   /* istanbul ignore if */
   if (typeof define === 'function' &&
-      /* istanbul ignore next */ typeof define.amd === 'object' &&
-      /* istanbul ignore next */ define.amd) {
+    /* istanbul ignore next */ typeof define.amd === 'object' &&
+    /* istanbul ignore next */ define.amd) {
     // defined as an anonymous module.
     define(['exports'], factory);
     // In case the source has been processed and wrapped in a define module use
@@ -61,7 +61,7 @@
   // defaultOptions, or during the parse call.
   var defaultOptions = exports.defaultOptions = {
     // Explicitly tell the parser when the input ends.
-      wait: false
+    wait: false
     // Store comments as an array in the chunk object.
     , comments: true
     // Track identifier scopes by adding an isLocal attribute to each
@@ -105,7 +105,7 @@
   // will be different in some situations.
 
   var errors = exports.errors = {
-      unexpected: 'unexpected %1 \'%2\' near \'%3\''
+    unexpected: 'unexpected %1 \'%2\' near \'%3\''
     , unexpectedEOF: 'unexpected symbol near \'<eof>\''
     , expected: '\'%1\' expected near \'%2\''
     , expectedToken: '%1 expected near \'%2\''
@@ -132,69 +132,69 @@
   // easily be customized by overriding these functions.
 
   var ast = exports.ast = {
-      labelStatement: function(label) {
+    labelStatement: function(label) {
       return {
-          type: 'LabelStatement'
+        type: 'LabelStatement'
         , label: label
       };
     }
 
     , breakStatement: function() {
       return {
-          type: 'BreakStatement'
+        type: 'BreakStatement'
       };
     }
-	
-	, continueStatement: function(){
-		return {
-			type: 'ContinueStatement'
-		};
-	}
+
+    , continueStatement: function(){
+      return {
+        type: 'ContinueStatement'
+      };
+    }
 
     , gotoStatement: function(label) {
       return {
-          type: 'GotoStatement'
+        type: 'GotoStatement'
         , label: label
       };
     }
 
     , returnStatement: function(args) {
       return {
-          type: 'ReturnStatement'
+        type: 'ReturnStatement'
         , 'arguments': args
       };
     }
 
     , ifStatement: function(clauses) {
       return {
-          type: 'IfStatement'
+        type: 'IfStatement'
         , clauses: clauses
       };
     }
     , ifClause: function(condition, body) {
       return {
-          type: 'IfClause'
+        type: 'IfClause'
         , condition: condition
         , body: body
       };
     }
     , elseifClause: function(condition, body) {
       return {
-          type: 'ElseifClause'
+        type: 'ElseifClause'
         , condition: condition
         , body: body
       };
     }
     , elseClause: function(body) {
       return {
-          type: 'ElseClause'
+        type: 'ElseClause'
         , body: body
       };
     }
 
     , whileStatement: function(condition, body) {
       return {
-          type: 'WhileStatement'
+        type: 'WhileStatement'
         , condition: condition
         , body: body
       };
@@ -202,14 +202,14 @@
 
     , doStatement: function(body) {
       return {
-          type: 'DoStatement'
+        type: 'DoStatement'
         , body: body
       };
     }
 
     , repeatStatement: function(condition, body) {
       return {
-          type: 'RepeatStatement'
+        type: 'RepeatStatement'
         , condition: condition
         , body: body
       };
@@ -217,7 +217,7 @@
 
     , localStatement: function(variables, init) {
       return {
-          type: 'LocalStatement'
+        type: 'LocalStatement'
         , variables: variables
         , init: init
       };
@@ -225,7 +225,7 @@
 
     , assignmentStatement: function(variables, init) {
       return {
-          type: 'AssignmentStatement'
+        type: 'AssignmentStatement'
         , variables: variables
         , init: init
       };
@@ -233,14 +233,14 @@
 
     , callStatement: function(expression) {
       return {
-          type: 'CallStatement'
+        type: 'CallStatement'
         , expression: expression
       };
     }
 
     , functionStatement: function(identifier, parameters, isLocal, body) {
       return {
-          type: 'FunctionDeclaration'
+        type: 'FunctionDeclaration'
         , identifier: identifier
         , isLocal: isLocal
         , parameters: parameters
@@ -250,7 +250,7 @@
 
     , forNumericStatement: function(variable, start, end, step, body) {
       return {
-          type: 'ForNumericStatement'
+        type: 'ForNumericStatement'
         , variable: variable
         , start: start
         , end: end
@@ -261,7 +261,7 @@
 
     , forGenericStatement: function(variables, iterators, body) {
       return {
-          type: 'ForGenericStatement'
+        type: 'ForGenericStatement'
         , variables: variables
         , iterators: iterators
         , body: body
@@ -270,14 +270,14 @@
 
     , chunk: function(body) {
       return {
-          type: 'Chunk'
+        type: 'Chunk'
         , body: body
       };
     }
 
     , identifier: function(name) {
       return {
-          type: 'Identifier'
+        type: 'Identifier'
         , name: name
       };
     }
@@ -285,12 +285,12 @@
     , literal: function(type, value, raw) {
       type = (type === StringLiteral) ? 'StringLiteral'
         : (type === NumericLiteral) ? 'NumericLiteral'
-        : (type === BooleanLiteral) ? 'BooleanLiteral'
-        : (type === NilLiteral) ? 'NilLiteral'
-        : 'VarargLiteral';
+          : (type === BooleanLiteral) ? 'BooleanLiteral'
+            : (type === NilLiteral) ? 'NilLiteral'
+              : 'VarargLiteral';
 
       return {
-          type: type
+        type: type
         , value: value
         , raw: raw
       };
@@ -298,21 +298,21 @@
 
     , tableKey: function(key, value) {
       return {
-          type: 'TableKey'
+        type: 'TableKey'
         , key: key
         , value: value
       };
     }
     , tableKeyString: function(key, value) {
       return {
-          type: 'TableKeyString'
+        type: 'TableKeyString'
         , key: key
         , value: value
       };
     }
     , tableValue: function(value) {
       return {
-          type: 'TableValue'
+        type: 'TableValue'
         , value: value
       };
     }
@@ -320,7 +320,7 @@
 
     , tableConstructorExpression: function(fields) {
       return {
-          type: 'TableConstructorExpression'
+        type: 'TableConstructorExpression'
         , fields: fields
       };
     }
@@ -330,7 +330,7 @@
         'BinaryExpression';
 
       return {
-          type: type
+        type: type
         , operator: operator
         , left: left
         , right: right
@@ -338,14 +338,14 @@
     }
     , unaryExpression: function(operator, argument) {
       return {
-          type: 'UnaryExpression'
+        type: 'UnaryExpression'
         , operator: operator
         , argument: argument
       };
     }
     , memberExpression: function(base, indexer, identifier) {
       return {
-          type: 'MemberExpression'
+        type: 'MemberExpression'
         , indexer: indexer
         , identifier: identifier
         , base: base
@@ -354,7 +354,7 @@
 
     , indexExpression: function(base, index) {
       return {
-          type: 'IndexExpression'
+        type: 'IndexExpression'
         , base: base
         , index: index
       };
@@ -362,7 +362,7 @@
 
     , callExpression: function(base, args) {
       return {
-          type: 'CallExpression'
+        type: 'CallExpression'
         , base: base
         , 'arguments': args
       };
@@ -370,7 +370,7 @@
 
     , tableCallExpression: function(base, args) {
       return {
-          type: 'TableCallExpression'
+        type: 'TableCallExpression'
         , base: base
         , 'arguments': args
       };
@@ -378,7 +378,7 @@
 
     , stringCallExpression: function(base, argument) {
       return {
-          type: 'StringCallExpression'
+        type: 'StringCallExpression'
         , base: base
         , argument: argument
       };
@@ -386,7 +386,7 @@
 
     , comment: function(value, raw) {
       return {
-          type: 'Comment'
+        type: 'Comment'
         , value: value
         , raw: raw
       };
@@ -412,7 +412,7 @@
 
   var slice = Array.prototype.slice
     , toString = Object.prototype.toString
-    ;
+  ;
 
   var indexOf = /* istanbul ignore next */ function (array, element) {
     for (var i = 0, length = array.length; i < length; ++i) {
@@ -606,12 +606,12 @@
 
     // Skip comments beginning with --
     while (45 === input.charCodeAt(index) &&
-           45 === input.charCodeAt(index + 1)) {
+    45 === input.charCodeAt(index + 1)) {
       scanComment();
       skipWhiteSpace();
     }
     if (index >= length) return {
-        type : EOF
+      type : EOF
       , value: '<eof>'
       , line: line
       , lineStart: lineStart
@@ -684,7 +684,7 @@
         if (!features.bitwiseOperators)
           break;
 
-        /* fall through */
+      /* fall through */
       case 42: case 94: case 37: case 44: case 123: case 125:
       case 93: case 40: case 41: case 59: case 35: case 45:
       case 43: // * ^ % , { } ] ( ) ; # - +
@@ -792,7 +792,7 @@
     }
 
     return {
-        type: type
+      type: type
       , value: value
       , line: line
       , lineStart: lineStart
@@ -806,7 +806,7 @@
   function scanPunctuator(value) {
     index += value.length;
     return {
-        type: Punctuator
+      type: Punctuator
       , value: value
       , line: line
       , lineStart: lineStart
@@ -819,7 +819,7 @@
   function scanVarargLiteral() {
     index += 3;
     return {
-        type: VarargLiteral
+      type: VarargLiteral
       , value: '...'
       , line: line
       , lineStart: lineStart
@@ -854,7 +854,7 @@
     string += fixupHighCharacters(input.slice(stringStart, index - 1));
 
     return {
-        type: StringLiteral
+      type: StringLiteral
       , value: string
       , line: beginLine
       , lineStart: beginLineStart
@@ -876,7 +876,7 @@
     if (false === string) raise(token, errors.expected, '[', token.value);
 
     return {
-        type: StringLiteral
+      type: StringLiteral
       , value: fixupHighCharacters(string)
       , line: beginLine
       , lineStart: beginLineStart
@@ -900,7 +900,7 @@
       readHexLiteral() : readDecLiteral();
 
     return {
-        type: NumericLiteral
+      type: NumericLiteral
       , value: value
       , line: line
       , lineStart: lineStart
@@ -1076,7 +1076,7 @@
         if (features.hexEscapes) {
           // \xXX, where XX is a sequence of exactly two hexadecimal digits
           if (isHexDigit(input.charCodeAt(index + 1)) &&
-              isHexDigit(input.charCodeAt(index + 2))) {
+            isHexDigit(input.charCodeAt(index + 2))) {
             index += 3;
             return String.fromCharCode(parseInt(input.slice(sequenceStart + 1, index), 16));
           }
@@ -1137,7 +1137,7 @@
       // intercepted in the lexer all location data is set manually.
       if (options.locations) {
         node.loc = {
-            start: { line: lineComment, column: tokenStart - lineStartComment }
+          start: { line: lineComment, column: tokenStart - lineStartComment }
           , end: { line: line, column: index - lineStart }
         };
       }
@@ -1197,9 +1197,9 @@
     }
 
     raise(null, isComment ?
-                errors.unfinishedLongComment :
-                errors.unfinishedLongString,
-          firstLine, '<eof>');
+      errors.unfinishedLongComment :
+      errors.unfinishedLongString,
+      firstLine, '<eof>');
   }
 
   // ## Lex functions and helpers.
@@ -1386,12 +1386,12 @@
   function Marker(token) {
     if (options.locations) {
       this.loc = {
-          start: {
-            line: token.line
+        start: {
+          line: token.line
           , column: token.range[0] - token.lineStart
         }
         , end: {
-            line: 0
+          line: 0
           , column: 0
         }
       };
@@ -1581,13 +1581,13 @@
   };
 
   LoopFlowContext.prototype.addGoto =
-  LoopFlowContext.prototype.addLabel =
-  /* istanbul ignore next */
-  function () { throw new Error('This should never happen'); };
+    LoopFlowContext.prototype.addLabel =
+      /* istanbul ignore next */
+      function () { throw new Error('This should never happen'); };
 
   LoopFlowContext.prototype.addLocal =
-  LoopFlowContext.prototype.raiseDeferredErrors =
-  function () {};
+    LoopFlowContext.prototype.raiseDeferredErrors =
+      function () {};
 
   function makeFlowContext() {
     return features.labels ? new FullFlowContext() : new LoopFlowContext();
@@ -1681,15 +1681,15 @@
           if (!flowContext.isInLoop())
             raise(token, errors.noLoopToBreak, token.value);
           return parseBreakStatement();
-		case 'continue': next(); return parseBreakStatement();
+        case 'continue': next(); return parseBreakStatement();
         case 'do':       next(); return parseDoStatement(flowContext);
         case 'goto':     next(); return parseGotoStatement(flowContext);
       }
     }
 
     if (features.contextualGoto &&
-        token.type === Identifier && token.value === 'goto' &&
-        lookahead.type === Identifier && lookahead.value !== 'goto') {
+      token.type === Identifier && token.value === 'goto' &&
+      lookahead.type === Identifier && lookahead.value !== 'goto') {
       next(); return parseGotoStatement(flowContext);
     }
 
@@ -1723,7 +1723,7 @@
   function parseBreakStatement() {
     return finishNode(ast.breakStatement());
   }
-  
+
   function parseContinueStatement() {
     return finishNode(ast.continueStatement());
   }
@@ -1885,7 +1885,7 @@
       flowContext.pushScope(true);
       body = parseBlock(flowContext);
       flowContext.popScope();
-	  consume(';');
+      //consume(';');
       expect('end');
       if (options.scope) destroyScope();
 
@@ -2021,18 +2021,18 @@
         var newBase;
 
         switch (StringLiteral === token.type ? '"' : token.value) {
-        case '.':
-        case '[':
-          lvalue = true;
-          break;
-        case ':':
-        case '(':
-        case '{':
-        case '"':
-          lvalue = null;
-          break;
-        default:
-          break both;
+          case '.':
+          case '[':
+            lvalue = true;
+            break;
+          case ':':
+          case '(':
+          case '{':
+          case '"':
+            lvalue = null;
+            break;
+          default:
+            break both;
         }
 
         base = parsePrefixExpressionPart(base, marker, flowContext);
@@ -2265,8 +2265,8 @@
         case 47: return 10; // //
         case 46: return 8; // ..
         case 60: case 62:
-            if('<<' === operator || '>>' === operator) return 7; // << >>
-            return 3; // <= >=
+          if('<<' === operator || '>>' === operator) return 7; // << >>
+          return 3; // <= >=
         case 61: case 126: return 3; // == ~=
         case 111: return 1; // or
       }
@@ -2285,7 +2285,7 @@
 
   function parseSubExpression(minPrecedence, flowContext) {
     var operator = token.value
-    // The left-hand side in binary operations.
+      // The left-hand side in binary operations.
       , expression, marker;
 
     if (trackLocations) marker = createLocationMarker();
@@ -2498,6 +2498,7 @@
 
   var versionFeatures = {
     '5.1': {
+      relaxedBreak: true
     },
     '5.2': {
       labels: true,
